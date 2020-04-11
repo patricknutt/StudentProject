@@ -1,0 +1,20 @@
+<!--build.xml-->
+<project name="Project1" default="build" basedir=".">
+   <property name="app" value="Project1"/>
+   <target name="compile">
+      <antcall target="clean"/>
+      <copy todir="compile"><fileset dir="${app}">
+         <patternset><include name="*.java"/>
+         </patternset></fileset></copy>
+      <javac srcdir="compile" destdir="compile"/>
+   </target>
+   <target name="build" depends="compile">
+      <copy todir="build\${app}">
+         <fileset dir="compile\${app}"></fileset></copy>
+
+
+   <target name="clean">
+      <delete dir="compile"/>
+	  <delete dir="build"/>
+   </target>
+</project>
